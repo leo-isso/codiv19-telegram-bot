@@ -1,0 +1,16 @@
+{
+  "name": "codiv19-telegram-bot",
+  "version": "1.0.0",
+  "description": "Telegram bot that provides COVID-19 stats",
+  "main": "server.js",
+  "author": "Leonardo Isso <leoisso.work@gmail.com>",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "dev": "sucrase-node src/server.ts"
+  },
+  "devDependencies": {
+    "sucrase": "^3.13.0",
+    "typescript": "^3.8.3"
+  }
+}
