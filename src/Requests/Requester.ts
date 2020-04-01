@@ -27,4 +27,4 @@ class Requester {
 
 const RequesterInstance = new Requester()
 
-export default RequesterInstance.getInstance()
+export default RequesterInstance
