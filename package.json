@@ -7,12 +7,16 @@
   "license": "MIT",
   "private": true,
   "scripts": {
+    "build": "sucrase ./src -d ./dist --transforms typescript,imports",
     "dev": "nodemon src/server.ts",
-    "build": "sucrase ./src -d ./dist --transforms typescript,imports"
+    "test": "mocha -r ts-node/register src/tests/**/*.test.ts"
   },
   "devDependencies": {
+    "@types/chai": "^4.2.11",
+    "@types/mocha": "^7.0.2",
     "@typescript-eslint/eslint-plugin": "^2.26.0",
     "@typescript-eslint/parser": "^2.26.0",
+    "chai": "^4.2.0",
     "eslint": "^6.8.0",
     "eslint-config-prettier": "^6.10.1",
     "eslint-config-standard": "^14.1.1",
@@ -21,8 +25,10 @@
     "eslint-plugin-prettier": "^3.1.2",
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-standard": "^4.0.1",
+    "mocha": "^7.1.1",
     "nodemon": "^2.0.2",
     "sucrase": "^3.13.0",
+    "ts-node": "^8.8.1",
     "typescript": "^3.8.3"
   }
 }
