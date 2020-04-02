@@ -1,16 +1,17 @@
 import { AxiosResponse } from 'axios'
 
 import Requester from '../Requester'
+import { StatisticsSchema } from '../../Schemas'
 
 class RequestMaker {
   private apiEndpoint: string
-  private response: AxiosResponse
+  private response: AxiosResponse<StatisticsSchema>
 
   setApiEndpoint (apiEndpoint:string) : void {
     this.apiEndpoint = apiEndpoint
   }
 
-  getResponseData (): object {
+  getResponseData (): StatisticsSchema {
     return this.response.data
   }
 
