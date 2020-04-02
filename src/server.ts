@@ -1,3 +1,5 @@
+import TelegramBot from 'node-telegram-bot-api'
+
 import './utils/env'
 import { StatisticsRequestMaker } from './Requests/RequestMakers'
 import StatisticsService from './Services/StatisticsService'
@@ -12,6 +14,11 @@ const handleStatistic = async ():Promise<string> => {
   return MessageService.createStatisticsMessage(statisticData)
 }
 
-handleStatistic().then(a => {
-  console.log(a)
+const token = process.env.TELEGRAM_BOT_TOKEN
+const bot = new TelegramBot(token, { polling: true })
+
+bot.onText(/\/global/, async (msg) => {
+  const chatId = msg.chat.id
+  const response = await handleStatistic()
+  bot.sendMessage(chatId, response)
 })
