@@ -1,3 +1,3 @@
-interface CommandInterface {
+export default interface CommandInterface {
   execute(): void
 }
