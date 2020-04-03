@@ -8,7 +8,7 @@ class TelegramBotReceiver {
     this.telegramBot = new TelegramBot(process.env.TELEGRAM_BOT_TOKEN)
   }
 
-  sendMessageToChannel = (message: string):void => {
+  sendMessageToChannel (message: string):void {
     this.telegramBot.sendMessage(this.channelId, message)
   }
 }
