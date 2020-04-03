@@ -1,0 +1,3 @@
+interface CommandInterface {
+  execute(): void
+}
