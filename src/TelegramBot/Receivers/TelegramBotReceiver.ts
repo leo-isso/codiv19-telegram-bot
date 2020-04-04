@@ -14,7 +14,7 @@ class TelegramBotReceiver {
 
   async sendHourlyMessageToChannel (): Promise<void> {
     const message = await this.createHourlyMessage()
-    this.telegramBot.sendMessage(this.channelId, message)
+    this.telegramBot.sendMessage(this.channelId, message, { parse_mode: 'MarkdownV2' })
   }
 
   async createHourlyMessage (): Promise<string> {
