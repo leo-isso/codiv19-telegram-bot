@@ -8,7 +8,6 @@ COPY ./scripts ./scripts
 RUN chmod -R +x ./scripts
 RUN sh ./scripts/cron-install.sh
 COPY ./src ./src
-COPY ./index.js .
 COPY ./.env .
 EXPOSE 3000
 ENTRYPOINT ["./scripts/entrypoint.sh"]
