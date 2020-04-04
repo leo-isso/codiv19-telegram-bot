@@ -2,15 +2,15 @@ import { CountrySchema } from '../../Schemas'
 
 class MessageService {
   static createStatisticsMessage (statisticData: CountrySchema): string {
-    const dateTime = new Date(statisticData.time).toLocaleString()
+    const dateTime = new Date(statisticData.time).toLocaleString('us-en', { timeZoneName: 'short' })
     return `
-Last Updated: ${dateTime}
+*Last Updated:* ${dateTime}
 
-Total Cases: ${statisticData.cases.total}
-Active Cases: ${statisticData.cases.active}
-Recovered Cases: ${statisticData.cases.recovered}
-Critical Cases: ${statisticData.cases.critical}
-Deaths: ${statisticData.deaths.total}
+*Total Cases:* ${statisticData.cases.total}
+*Active Cases:* ${statisticData.cases.active}
+*Recovered Cases:* ${statisticData.cases.recovered}
+*Critical Cases:* ${statisticData.cases.critical}
+*Deaths:* ${statisticData.deaths.total}
     `
   }
 }
