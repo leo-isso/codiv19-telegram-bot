@@ -1,5 +1,5 @@
 #!/bin/bash
-npm run build
+yarn build
 sh ./scripts/cron-setup.sh
 
-node ./foreground.js
+serve -p 3000 .
