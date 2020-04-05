@@ -1,6 +1,10 @@
 import CommandInterface from './CommandInterface'
 import { TelegramBotReceiver } from '../Receivers'
 
+import { StatisticsRequestMaker } from '../../Requests/RequestMakers'
+import StatisticsService from '../../Services/StatisticsService'
+import MessageService from '../../Services/MessageService/MessageService'
+
 class SendHourlyMessageToChannelCommand implements CommandInterface {
   public telegramBot: TelegramBotReceiver
 
@@ -9,7 +13,21 @@ class SendHourlyMessageToChannelCommand implements CommandInterface {
   }
 
   async execute ():Promise<void> {
-    this.telegramBot.sendHourlyMessageToChannel()
+    const message = this.createHourlyMessage()
+    this.telegramBot.sendHourlyMessageToChannel(message)
+  }
+
+  async createHourlyMessage (): Promise<string> {
+    const statisticRequest = new StatisticsRequestMaker()
+    await statisticRequest.makeRequest()
+    const payload = statisticRequest.getResponseData()
+
+    const statisticsService = new StatisticsService(payload)
+    const statisticData = statisticsService.getStatisticData()
+
+    const message = MessageService.createStatisticsMessage(statisticData)
+
+    return message
   }
 }
 
