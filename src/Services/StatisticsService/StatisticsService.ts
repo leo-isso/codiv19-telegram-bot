@@ -12,7 +12,10 @@ class StatisticsService {
   }
 
   getTopFive (): CountrySchema[] {
-    return this.payload.response.splice(0, 4)
+    return this.payload.response
+      .filter(country => country.country !== 'All' && country.country !== 'World')
+      .sort((countryA: CountrySchema, countryB: CountrySchema) => (countryA.cases.total < countryB.cases.total) ? 1 : -1)
+      .slice(0, 5)
   }
 }
 
