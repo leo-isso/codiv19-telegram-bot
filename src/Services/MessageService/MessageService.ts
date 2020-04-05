@@ -23,7 +23,7 @@ class MessageService {
     const dateTime = new Date(statisticData[0].time).toLocaleString('us-en', { timeZoneName: 'short' })
 
     const messageBody = statisticData.map(countryData => {
-      return `
+      return `*${countryData.country}*
 *Total Cases:* ${messageFormater.addSpaceToBigStringNumber(countryData.cases.total.toString())}
 *Active Cases:* ${messageFormater.addSpaceToBigStringNumber(countryData.cases.active.toString())}
 *Recovered Cases:* ${messageFormater.addSpaceToBigStringNumber(countryData.cases.recovered.toString())}
