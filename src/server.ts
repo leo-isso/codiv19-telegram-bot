@@ -13,6 +13,10 @@ try {
       invoker.hourlyCommand()
       break
 
+    case '--fourHours':
+      invoker.fourHourCommand()
+      break
+
     default:
       console.error('Invalid command')
       break

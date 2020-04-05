@@ -1,5 +1,8 @@
 import { TelegramBotReceiver } from '../Receivers'
-import { SendHourlyMessageToChannelCommand } from '../Commands'
+import {
+  SendHourlyMessageToChannelCommand,
+  SendFourHoursMessageToChannelCommand
+} from '../Commands'
 
 class TelegramBotInvoker {
   telegramBotReceiver: TelegramBotReceiver
@@ -10,6 +13,10 @@ class TelegramBotInvoker {
 
   hourlyCommand ():void{
     new SendHourlyMessageToChannelCommand(this.telegramBotReceiver).execute()
+  }
+
+  fourHourCommand ():void{
+    new SendFourHoursMessageToChannelCommand(this.telegramBotReceiver).execute()
   }
 }
 
