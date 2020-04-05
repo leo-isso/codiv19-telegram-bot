@@ -1,11 +1,12 @@
 import CommandInterface from './CommandInterface'
-import { TelegramBotReceiver } from '../Receivers'
+import MessageCommandInterface from './MessageCommandInterface'
 
+import { TelegramBotReceiver } from '../Receivers'
 import { StatisticsRequestMaker } from '../../Requests/RequestMakers'
 import StatisticsService from '../../Services/StatisticsService'
 import MessageService from '../../Services/MessageService/MessageService'
 
-class SendHourlyMessageToChannelCommand implements CommandInterface {
+class SendHourlyMessageToChannelCommand implements CommandInterface, MessageCommandInterface {
   public telegramBot: TelegramBotReceiver
 
   constructor (telegramBot: TelegramBotReceiver) {
