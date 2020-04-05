@@ -10,6 +10,10 @@ class StatisticsService {
   getStatisticData (): CountrySchema {
     return this.payload.response.find(country => country.country === 'All')
   }
+
+  getTopFive (): CountrySchema[] {
+    return this.payload.response.splice(0, 4)
+  }
 }
 
 export default StatisticsService
