@@ -1,7 +1,7 @@
 import { TelegramBotReceiver } from '../Receivers'
 import {
   SendHourlyMessageToChannelCommand,
-  SendFourHoursMessageToChannelCommand
+  SendTopFiveMessageToChannelCommand
 } from '../Commands'
 
 class TelegramBotInvoker {
@@ -16,7 +16,7 @@ class TelegramBotInvoker {
   }
 
   fourHourCommand ():void{
-    new SendFourHoursMessageToChannelCommand(this.telegramBotReceiver).execute()
+    new SendTopFiveMessageToChannelCommand(this.telegramBotReceiver).execute()
   }
 }
 
