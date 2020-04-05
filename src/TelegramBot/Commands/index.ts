@@ -1,2 +1,6 @@
 import SendHourlyMessageToChannelCommand from './SendHourlyMessageToChannelCommand'
-export { SendHourlyMessageToChannelCommand }
+import SendTopFiveMessageToChannelCommand from './SendTopFiveMessageToChannelCommand'
+export {
+  SendTopFiveMessageToChannelCommand,
+  SendHourlyMessageToChannelCommand
+}
