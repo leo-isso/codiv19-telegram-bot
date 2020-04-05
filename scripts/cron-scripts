@@ -1,2 +1,2 @@
-5 * * * * /usr/local/bin/node /covid19-telegram-bot/dist/server.js --hourly
-6 0,4,8,12,16,20 * * * /usr/local/bin/node /covid19-telegram-bot/dist/server.js --fourHours
+1 * * * * /usr/local/bin/node /covid19-telegram-bot/dist/server.js --hourly
+2 */4 * * * /usr/local/bin/node /covid19-telegram-bot/dist/server.js --fourHours
