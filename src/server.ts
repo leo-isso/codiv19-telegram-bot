@@ -1,11 +1,22 @@
 import './utils/env'
 
-import { SendHourlyMessageToChannelCommand } from './TelegramBot/Commands'
 import { TelegramBotReceiver } from './TelegramBot/Receivers'
+import TelegramBotInvoker from './TelegramBot/Invokers/TelegramBotInvoker'
 
-const executeCommand = () :void => {
-  const command = new SendHourlyMessageToChannelCommand(new TelegramBotReceiver())
-  command.execute()
+try {
+  const command = process.argv[2]
+  const receiver = new TelegramBotReceiver(process.env.TELEGRAM_BOT_TOKEN)
+  const invoker = new TelegramBotInvoker(receiver)
+
+  switch (command) {
+    case '--hourly':
+      invoker.hourlyCommand()
+      break
+
+    default:
+      console.error('Invalid command')
+      break
+  }
+} catch (err) {
+  console.error('Please use a valid command as an inline argument.')
 }
-
-executeCommand()
