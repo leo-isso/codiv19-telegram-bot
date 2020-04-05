@@ -4,8 +4,8 @@ class TelegramBotReceiver {
   public telegramBot: TelegramBot
   private channelId: string = process.env.TELEGRAM_CHANNEL_ID
 
-  constructor () {
-    this.telegramBot = new TelegramBot(process.env.TELEGRAM_BOT_TOKEN)
+  constructor (botToken:string) {
+    this.telegramBot = new TelegramBot(botToken)
   }
 
   async sendHourlyMessageToChannel (asyncMessage: Promise<string>): Promise<void> {
