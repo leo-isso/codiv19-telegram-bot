@@ -1,3 +1,3 @@
 #!/bin/bash
-printf "5 * * * * /usr/local/bin/node /covid19-telegram-bot/dist/server.js --hourly\n" | crontab -
+cat - /covid19-telegram-bot/scripts/cron-scripts | crontab -
 /etc/init.d/cron start
