@@ -14,7 +14,7 @@ class SendHourlyMessageToChannelCommand implements CommandInterface {
 
   async execute ():Promise<void> {
     const message = this.createHourlyMessage()
-    this.telegramBot.sendHourlyMessageToChannel(message)
+    this.telegramBot.sendMessage(message)
   }
 
   async createHourlyMessage (): Promise<string> {
@@ -22,8 +22,7 @@ class SendHourlyMessageToChannelCommand implements CommandInterface {
     await statisticRequest.makeRequest()
     const payload = statisticRequest.getResponseData()
 
-    const statisticsService = new StatisticsService(payload)
-    const statisticData = statisticsService.getStatisticData()
+    const statisticData = new StatisticsService(payload).getStatisticData()
 
     const message = MessageService.createStatisticsMessage(statisticData)
 
