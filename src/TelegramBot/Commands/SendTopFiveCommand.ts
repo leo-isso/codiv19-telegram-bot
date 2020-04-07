@@ -20,8 +20,8 @@ class SendTopFiveCommand implements CommandInterface, MessageCommandInterface {
   }
 
   async createMessage (): Promise<string> {
-    const requester = CovidStatisticsRequester
-    const statisticRequest = new RequestMaker(requester, '/statistics')
+    const statisticRequester = CovidStatisticsRequester
+    const statisticRequest = new RequestMaker(statisticRequester, '/statistics')
     await statisticRequest.makeRequest()
     const payload = statisticRequest.getResponseData()
 
