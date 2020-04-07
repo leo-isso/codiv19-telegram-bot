@@ -1,6 +1,6 @@
-import SendHourlyMessageToChannelCommand from './SendHourlyMessageToChannelCommand'
+import SendStatisticsWithNewsCommand from './SendStatisticsWithNewsCommand'
 import SendTopFiveMessageToChannelCommand from './SendTopFiveMessageToChannelCommand'
 export {
   SendTopFiveMessageToChannelCommand,
-  SendHourlyMessageToChannelCommand
+  SendStatisticsWithNewsCommand
 }
