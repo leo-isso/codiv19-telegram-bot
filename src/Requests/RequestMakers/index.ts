@@ -1,2 +1,2 @@
-import StatisticsRequestMaker from './StatisticsRequestMaker'
-export { StatisticsRequestMaker }
+import RequestMaker from './RequestMaker'
+export default RequestMaker
