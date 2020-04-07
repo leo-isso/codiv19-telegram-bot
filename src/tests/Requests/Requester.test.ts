@@ -1,12 +1,12 @@
 import { expect } from 'chai'
 import 'mocha'
 
-import Requester from './../../Requests/Requester'
+import { CovidStatisticsRequester } from './../../Requests/Requester'
 
-describe('Testing Requester', () => {
-  it('Requester A and B should represent same instance', () => {
-    const RequesterA = Requester.getInstance()
-    const RequesterB = Requester.getInstance()
+describe('Testing CovidStatisticsRequester', () => {
+  it('CovidStatisticsRequester A and B should represent same instance', () => {
+    const RequesterA = CovidStatisticsRequester.getInstance()
+    const RequesterB = CovidStatisticsRequester.getInstance()
 
     const comparizon = (RequesterA === RequesterB)
 
