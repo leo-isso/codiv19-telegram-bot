@@ -1,4 +1,4 @@
-import TelegramBot from 'node-telegram-bot-api'
+import TelegramBot, { InlineKeyboardButton, SendMessageOptions } from 'node-telegram-bot-api'
 
 class TelegramBotReceiver {
   public telegramBot: TelegramBot
@@ -8,9 +8,13 @@ class TelegramBotReceiver {
     this.telegramBot = new TelegramBot(botToken)
   }
 
-  async sendMessage (asyncMessage: Promise<string>): Promise<void> {
+  async sendMessage (asyncMessage: Promise<string>, buttons?: Promise<InlineKeyboardButton[][]>): Promise<void> {
     const message = await asyncMessage
-    this.telegramBot.sendMessage(this.channelId, message, { parse_mode: 'Markdown' })
+
+    const options: SendMessageOptions = { parse_mode: 'Markdown' }
+    if (buttons) options.reply_markup = { inline_keyboard: await buttons }
+
+    this.telegramBot.sendMessage(this.channelId, message, options)
   }
 }
 
