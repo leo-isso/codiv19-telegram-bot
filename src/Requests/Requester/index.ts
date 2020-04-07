@@ -1,2 +1,6 @@
 import CovidStatisticsRequester from './CovidStatisticsRequester'
-export { CovidStatisticsRequester }
+import NewsRequester from './NewsRequester'
+export {
+  CovidStatisticsRequester,
+  NewsRequester
+}
