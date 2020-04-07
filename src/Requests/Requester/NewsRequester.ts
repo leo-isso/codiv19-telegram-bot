@@ -4,9 +4,8 @@ import { OutgoingHttpHeaders } from 'http'
 import Requester from './Requester'
 
 class NewsRequester extends Requester {
-  apiHost: string = process.env.RAPID_API_HOST
-  apiKey: string = process.env.RAPID_API_KEY
-  apiUrl: string = process.env.RAPID_API_URL
+  apiKey: string = process.env.NEWS_API_KEY
+  apiUrl: string = process.env.NEWS_API_URL
   instance: AxiosInstance = null
 
   createHeaders (): OutgoingHttpHeaders {
