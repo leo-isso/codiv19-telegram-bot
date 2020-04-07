@@ -2,9 +2,10 @@ import CommandInterface from './CommandInterface'
 import MessageCommandInterface from './MessageCommandInterface'
 
 import { TelegramBotReceiver } from '../Receivers'
-import { StatisticsRequestMaker } from '../../Requests/RequestMakers'
+import RequestMaker from '../../Requests/RequestMakers'
 import StatisticsService from '../../Services/StatisticsService'
 import MessageService from '../../Services/MessageService/MessageService'
+import { CovidStatisticsRequester } from '../../Requests/Requester'
 
 class SendTopFiveMessageToChannelCommand implements CommandInterface, MessageCommandInterface {
   public telegramBot: TelegramBotReceiver
@@ -19,7 +20,8 @@ class SendTopFiveMessageToChannelCommand implements CommandInterface, MessageCom
   }
 
   async createMessage (): Promise<string> {
-    const statisticRequest = new StatisticsRequestMaker()
+    const requester = CovidStatisticsRequester
+    const statisticRequest = new RequestMaker(requester, '/statistics')
     await statisticRequest.makeRequest()
     const payload = statisticRequest.getResponseData()
 
