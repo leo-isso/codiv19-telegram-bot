@@ -1,14 +1,16 @@
 import { AxiosResponse } from 'axios'
 
-import { CovidStatisticsRequester } from '../Requester'
+import Requester from '../Requester'
 import { StatisticsSchema } from '../../Schemas'
 
 class RequestMaker {
   private apiEndpoint: string
   private response: AxiosResponse<StatisticsSchema>
+  private requester: Requester
 
-  setApiEndpoint (apiEndpoint:string) : void {
+  constructor (requester: Requester, apiEndpoint:string) {
     this.apiEndpoint = apiEndpoint
+    this.requester = requester
   }
 
   getResponseData (): StatisticsSchema {
@@ -16,7 +18,7 @@ class RequestMaker {
   }
 
   async makeRequest (): Promise<void> {
-    const requester = CovidStatisticsRequester.getInstance()
+    const requester = this.requester.getInstance()
     const response = await requester.get(this.apiEndpoint)
     this.response = response
   }
