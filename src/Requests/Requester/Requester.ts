@@ -2,8 +2,6 @@ import axios, { AxiosInstance } from 'axios'
 import { OutgoingHttpHeaders } from 'http'
 
 class Requester {
-  apiHost: string
-  apiKey: string
   apiUrl: string
   instance: AxiosInstance = null
 
