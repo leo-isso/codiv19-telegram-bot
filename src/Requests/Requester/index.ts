@@ -1,2 +1,2 @@
-import Requester from './Requester'
-export default Requester
+import CovidStatisticsRequester from './CovidStatisticsRequester'
+export { CovidStatisticsRequester }
