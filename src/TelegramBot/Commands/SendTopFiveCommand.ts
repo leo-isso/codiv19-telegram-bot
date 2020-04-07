@@ -7,7 +7,7 @@ import StatisticsService from '../../Services/StatisticsService'
 import MessageService from '../../Services/MessageService/MessageService'
 import { CovidStatisticsRequester } from '../../Requests/Requester'
 
-class SendTopFiveMessageToChannelCommand implements CommandInterface, MessageCommandInterface {
+class SendTopFiveCommand implements CommandInterface, MessageCommandInterface {
   public telegramBot: TelegramBotReceiver
 
   constructor (telegramBot: TelegramBotReceiver) {
@@ -33,4 +33,4 @@ class SendTopFiveMessageToChannelCommand implements CommandInterface, MessageCom
   }
 }
 
-export default SendTopFiveMessageToChannelCommand
+export default SendTopFiveCommand

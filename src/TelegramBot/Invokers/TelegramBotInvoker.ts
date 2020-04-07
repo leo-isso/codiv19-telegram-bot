@@ -1,7 +1,7 @@
 import { TelegramBotReceiver } from '../Receivers'
 import {
   SendStatisticsWithNewsCommand,
-  SendTopFiveMessageToChannelCommand
+  SendTopFiveCommand
 } from '../Commands'
 
 class TelegramBotInvoker {
@@ -16,7 +16,7 @@ class TelegramBotInvoker {
   }
 
   fourHourCommand ():void{
-    new SendTopFiveMessageToChannelCommand(this.telegramBotReceiver).execute()
+    new SendTopFiveCommand(this.telegramBotReceiver).execute()
   }
 }
 

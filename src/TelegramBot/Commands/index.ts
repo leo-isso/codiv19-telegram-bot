@@ -1,6 +1,6 @@
 import SendStatisticsWithNewsCommand from './SendStatisticsWithNewsCommand'
-import SendTopFiveMessageToChannelCommand from './SendTopFiveMessageToChannelCommand'
+import SendTopFiveCommand from './SendTopFiveCommand'
 export {
-  SendTopFiveMessageToChannelCommand,
+  SendTopFiveCommand,
   SendStatisticsWithNewsCommand
 }
