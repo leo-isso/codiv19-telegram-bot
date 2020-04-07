@@ -4,11 +4,17 @@ import { OutgoingHttpHeaders } from 'http'
 class Requester {
   apiUrl: string
   instance: AxiosInstance = null
+  parameters: object
+
+  constructor (parameters?: object) {
+    this.parameters = parameters || {}
+  }
 
   createInstance ():void {
     this.instance = axios.create({
       baseURL: this.apiUrl,
-      headers: this.createHeaders()
+      headers: this.createHeaders(),
+      params: this.parameters
     })
   }
 
