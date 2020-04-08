@@ -1,14 +1,16 @@
+import ButtonsCommandInterface from './ButtonsCommandInterface'
 import CommandInterface from './CommandInterface'
 import MessageCommandInterface from './MessageCommandInterface'
-import ButtonsCommandInterface from './ButtonsCommandInterface'
 
-import { TelegramBotReceiver } from '../Receivers'
 import RequestMaker from '../../Requests/RequestMakers'
+import MessageService from '../../Services/MessageService'
+import NewsService from '../../Services/NewsService'
 import StatisticsService from '../../Services/StatisticsService'
-import MessageService from '../../Services/MessageService/MessageService'
+import TelegramButtonsService from '../../Services/TelegramButtonsService'
 import { CovidStatisticsRequester, NewsRequester } from '../../Requests/Requester'
-import { StatisticsSchema, NewsSchema } from '../../Schemas'
 import { InlineKeyboardButton } from 'node-telegram-bot-api'
+import { StatisticsSchema, NewsSchema } from '../../Schemas'
+import { TelegramBotReceiver } from '../Receivers'
 
 class SendStatisticsWithNewsCommand implements CommandInterface, MessageCommandInterface, ButtonsCommandInterface {
   public telegramBot: TelegramBotReceiver
@@ -38,10 +40,14 @@ class SendStatisticsWithNewsCommand implements CommandInterface, MessageCommandI
 
   async createButtons (): Promise<InlineKeyboardButton[][]> {
     const newsRequester = NewsRequester
-    const newsRequest = new RequestMaker<NewsSchema>(newsRequester, '/top-headlines', { country: 'us', q: 'COVID-19' })
+    const newsRequest = new RequestMaker<NewsSchema>(newsRequester, '/top-headlines', { sources: 'google-news', q: 'coronavirus' })
     await newsRequest.makeRequest()
-    const buttons: InlineKeyboardButton[][] = newsRequest.getResponseData().articles.slice(0, 3).map(article => { return [{ text: article.title, url: article.url }] })
-    console.log(buttons)
+    const payload = newsRequest.getResponseData()
+
+    const newsData = new NewsService(payload).getTopFive()
+
+    const buttons = TelegramButtonsService.createTelegramNewsButtons(newsData)
+
     return buttons
   }
 }
