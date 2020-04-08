@@ -1,11 +1,11 @@
 import CommandInterface from './CommandInterface'
 import MessageCommandInterface from './MessageCommandInterface'
 
-import { TelegramBotReceiver } from '../Receivers'
+import MessageService from '../../Services/MessageService/MessageService'
 import RequestMaker from '../../Requests/RequestMakers'
 import StatisticsService from '../../Services/StatisticsService'
-import MessageService from '../../Services/MessageService/MessageService'
 import { CovidStatisticsRequester } from '../../Requests/Requester'
+import { TelegramBotReceiver } from '../Receivers'
 
 class SendTopFiveCommand implements CommandInterface, MessageCommandInterface {
   public telegramBot: TelegramBotReceiver
