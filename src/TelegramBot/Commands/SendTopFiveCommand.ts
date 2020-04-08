@@ -6,6 +6,7 @@ import RequestMaker from '../../Requests/RequestMakers'
 import StatisticsService from '../../Services/StatisticsService'
 import { CovidStatisticsRequester } from '../../Requests/Requester'
 import { TelegramBotReceiver } from '../Receivers'
+import { StatisticsSchema } from '../../Schemas'
 
 class SendTopFiveCommand implements CommandInterface, MessageCommandInterface {
   public telegramBot: TelegramBotReceiver
@@ -21,7 +22,7 @@ class SendTopFiveCommand implements CommandInterface, MessageCommandInterface {
 
   async createMessage (): Promise<string> {
     const statisticRequester = CovidStatisticsRequester
-    const statisticRequest = new RequestMaker(statisticRequester, '/statistics')
+    const statisticRequest = new RequestMaker<StatisticsSchema>(statisticRequester, '/statistics')
     await statisticRequest.makeRequest()
     const payload = statisticRequest.getResponseData()
 
