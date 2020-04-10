@@ -2,6 +2,16 @@ import { StatisticsSchema, CountrySchema } from '../../Schemas'
 
 class StatisticsService {
   payload: StatisticsSchema
+  continents = [
+    'Africa',
+    'Antartic',
+    'Asia',
+    'Center-America',
+    'Europe',
+    'North-America',
+    'Oceania',
+    'South-America'
+  ]
 
   constructor (payload: StatisticsSchema) {
     this.payload = payload
@@ -9,14 +19,7 @@ class StatisticsService {
 
   getStatisticData (): CountrySchema {
     const continents = this.payload.response.filter(country => (
-      country.country === 'Africa' ||
-      country.country === 'Antartic' ||
-      country.country === 'Asia' ||
-      country.country === 'Center-America' ||
-      country.country === 'Europe' ||
-      country.country === 'North-America' ||
-      country.country === 'Oceania' ||
-      country.country === 'South-America'
+      this.continents.includes(country.country)
     ))
 
     const world = continents.reduce((world, country, index, continents) => {
@@ -49,6 +52,7 @@ class StatisticsService {
 
   getTopFive (): CountrySchema[] {
     return this.payload.response
+      .filter(country => (!this.continents.includes(country.country)))
       .filter(country => country.country !== 'All' && country.country !== 'World')
       .sort((countryA: CountrySchema, countryB: CountrySchema) => (countryA.cases.total < countryB.cases.total) ? 1 : -1)
       .slice(0, 5)
