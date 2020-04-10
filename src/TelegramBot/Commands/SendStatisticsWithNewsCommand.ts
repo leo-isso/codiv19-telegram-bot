@@ -44,7 +44,7 @@ class SendStatisticsWithNewsCommand implements CommandInterface, MessageCommandI
     await newsRequest.makeRequest()
     const payload = newsRequest.getResponseData()
 
-    const newsData = new NewsService(payload).getTopFive()
+    const newsData = new NewsService(payload).getTopNews(3)
 
     const buttons = TelegramButtonsService.createTelegramNewsButtons(newsData)
 

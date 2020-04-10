@@ -7,8 +7,8 @@ class NewsService {
     this.payload = payload
   }
 
-  getTopFive (): ArticleSchema[] {
-    return this.payload.articles.slice(0, 5)
+  getTopNews (howMany = 5): ArticleSchema[] {
+    return this.payload.articles.slice(0, howMany)
   }
 }
 
