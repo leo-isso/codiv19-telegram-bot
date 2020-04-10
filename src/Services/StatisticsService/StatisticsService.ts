@@ -8,7 +8,43 @@ class StatisticsService {
   }
 
   getStatisticData (): CountrySchema {
-    return this.payload.response.find(country => country.country === 'All')
+    const continents = this.payload.response.filter(country => (
+      country.country === 'Africa' ||
+      country.country === 'Antartic' ||
+      country.country === 'Asia' ||
+      country.country === 'Center-America' ||
+      country.country === 'Europe' ||
+      country.country === 'North-America' ||
+      country.country === 'Oceania' ||
+      country.country === 'South-America'
+    ))
+
+    const world = continents.reduce((world, country, index, continents) => {
+      const newCases = (): number => {
+        return parseInt(world.cases.new) + parseInt(country.cases.new)
+      }
+      const newDeaths = (): number => {
+        return parseInt(world.cases.new) + parseInt(country.cases.new)
+      }
+
+      return {
+        country: 'World',
+        cases: {
+          new: `+${newCases()}`,
+          active: world.cases.active + country.cases.active,
+          critical: world.cases.critical + country.cases.critical,
+          recovered: world.cases.recovered + country.cases.recovered,
+          total: world.cases.total + country.cases.total
+        },
+        deaths: {
+          new: `+${newDeaths()}`,
+          total: world.deaths.total + country.deaths.total
+        },
+        time: continents[0].time
+      }
+    })
+
+    return world
   }
 
   getTopFive (): CountrySchema[] {
