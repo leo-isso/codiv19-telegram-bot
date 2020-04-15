@@ -28,7 +28,7 @@ class SendTopFiveCommand implements CommandInterface, MessageCommandInterface {
 
     const statisticData = new StatisticsService(payload).getTopFive()
 
-    const message = MessageService.createTopFiveMessage(statisticData)
+    const message = MessageService.createCountriesMessage(statisticData)
 
     return message
   }

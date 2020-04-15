@@ -121,7 +121,7 @@ describe('Testing MessageService methods', () => {
 *Updated @* 4/13/2020, 8:58:20 AM GMT-3`
     )
 
-    const formatedMessage = MessageService.createTopFiveMessage(countries)
+    const formatedMessage = MessageService.createCountriesMessage(countries)
 
     expect(formatedMessage).to.equal(expectedMessage)
   })

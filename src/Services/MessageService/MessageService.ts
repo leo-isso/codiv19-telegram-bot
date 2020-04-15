@@ -12,7 +12,7 @@ ${messageBody}
     )
   }
 
-  static createTopFiveMessage (statisticData: CountrySchema[]): string {
+  static createCountriesMessage (statisticData: CountrySchema[]): string {
     const dateTime = new Date(statisticData[0].time).toLocaleString('us-en', { timeZoneName: 'short' })
     const messageBody = statisticData.map(countryData => {
       return this.createCountryData(countryData, true)
