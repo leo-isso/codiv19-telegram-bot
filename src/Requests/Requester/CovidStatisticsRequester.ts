@@ -1,6 +1,7 @@
 import { AxiosInstance } from 'axios'
 import { OutgoingHttpHeaders } from 'http'
 
+import './../../utils/env'
 import Requester from './Requester'
 
 class CovidStatisticsRequester extends Requester {

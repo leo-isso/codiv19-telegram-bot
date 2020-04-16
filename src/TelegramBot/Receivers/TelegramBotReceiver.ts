@@ -1,5 +1,6 @@
 import TelegramBot, { InlineKeyboardButton, SendMessageOptions } from 'node-telegram-bot-api'
 
+import './../../utils/env'
 class TelegramBotReceiver {
   public telegramBot: TelegramBot
   private channelId: string = process.env.TELEGRAM_CHANNEL_ID
