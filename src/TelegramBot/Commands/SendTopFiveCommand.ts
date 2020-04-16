@@ -1,14 +1,9 @@
 import CommandInterface from './CommandInterface'
-import MessageCommandInterface from './MessageCommandInterface'
 
-import MessageService from '../../Services/MessageService/MessageService'
-import RequestMaker from '../../Requests/RequestMakers'
-import StatisticsService from '../../Services/StatisticsService'
-import { CovidStatisticsRequester } from '../../Requests/Requester'
+import TelegramMessageService from '../../Services/TelegramMessageService'
 import { TelegramBotReceiver } from '../Receivers'
-import { StatisticsSchema } from '../../Schemas'
 
-class SendTopFiveCommand implements CommandInterface, MessageCommandInterface {
+class SendTopFiveCommand implements CommandInterface {
   public telegramBot: TelegramBotReceiver
 
   constructor (telegramBot: TelegramBotReceiver) {
@@ -16,21 +11,9 @@ class SendTopFiveCommand implements CommandInterface, MessageCommandInterface {
   }
 
   async execute ():Promise<void> {
-    const message = this.createMessage()
+    const messageService = new TelegramMessageService()
+    const message = messageService.createTopFiveCountryMessage()
     this.telegramBot.sendMessage(message)
-  }
-
-  async createMessage (): Promise<string> {
-    const statisticRequester = CovidStatisticsRequester
-    const statisticRequest = new RequestMaker<StatisticsSchema>(statisticRequester, '/statistics')
-    await statisticRequest.makeRequest()
-    const payload = statisticRequest.getResponseData()
-
-    const statisticData = new StatisticsService(payload).getTopFive()
-
-    const message = MessageService.createCountriesMessage(statisticData)
-
-    return message
   }
 }
 
