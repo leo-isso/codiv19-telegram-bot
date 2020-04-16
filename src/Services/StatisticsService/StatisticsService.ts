@@ -10,11 +10,11 @@ class StatisticsService {
   }
 
   getStatisticData (): CountrySchema {
-    const continents = this.payload.response.filter(country => (
+    const filteredContinents = this.payload.response.filter(country => (
       continents.includes(country.country)
     ))
 
-    const world = continents.reduce((world, country, index, continents) => {
+    const world = filteredContinents.reduce((world, country, index, continents) => {
       const newCases = (): number => {
         return parseInt(world.cases.new) + parseInt(country.cases.new)
       }
