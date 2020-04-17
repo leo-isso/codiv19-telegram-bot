@@ -1,5 +1,7 @@
 # COVID-19 Telegram Bot
 
+Follow the bot's [telegram channel](https://t.me/covid19hourly)
+
 ## Inspiration
 
 I live in São Paulo, Brazil, and due to the [coronavirus pandemic](https://en.wikipedia.org/wiki/2019%E2%80%9320_coronavirus_pandemic) the city's citizens were asked to #stayhome and help to flatten the infection graph curve, so the authorities and medical institutions can work with a less overloaded system, consequently saving more lifes.
@@ -19,3 +21,33 @@ So basically, at the times that were set to cron with this [script](./scripts/cr
 - Sent the formatted message to the Channel
 
 To make it easier to develop in any OS, make the use of crontab, test if it's running as expected, and serve, the project is run in a [docker container](https://www.docker.com/).
+
+## Contributing
+
+If you want to help this project by contributing, please do it, you are super welcome!
+
+All you have to do is:
+
+- Fork the project
+- Checkout for a new branch
+- Code
+- Test
+- Create a pull request
+
+### Running the project
+
+`Soon`
+
+### Tests
+
+`Soon`
+
+### Deploying
+
+`Soon`
+
+## Donating
+
+If you want to help me to keep creating and serving open source projects, please:
+
+[Buy me a Coffee](https://ko-fi.com/leoisso)
