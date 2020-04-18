@@ -36,15 +36,99 @@ All you have to do is:
 
 ### Running the project
 
-`Soon`
+To run this project, you will need to get the keys to make request to the APIs.
+
+You can get the COVID-19's key [here](https://rapidapi.com/api-sports/api/covid-193/)
+
+And set these variables:
+
+```
+RAPID_API_HOST=covid-193.p.rapidapi.com
+RAPID_API_KEY=<the_key>
+RAPID_API_URL=https://covid-193.p.rapidapi.com
+```
+
+Also, you'll need the news api key, that you can get [here](https://newsapi.org/)
+
+Set the following environment variables:
+
+```
+NEWS_API_KEY=<the_key>
+NEWS_API_URL=https://newsapi.org/v2
+```
+
+The last but not least, actually one of the most important things here, you'll need a test bot!
+
+You can find everything you need to know at [Telegram API's docs](https://core.telegram.org/api) and at [Telegram Bots API's docs](https://core.telegram.org/bots/api)! Botfather shall help ya!
+
+Ah yes, you can also create a channel, or even pass an user ID to the `TELEGRAM_CHANNEL_ID` variable
+
+```
+TELEGRAM_BOT_TOKEN=<the_key>
+TELEGRAM_CHANNEL_ID=<channel_id || user_id>
+```
+
+Ooookay, everything is set! All you got to do is to build the JS files and test it, rigth?
+
+```sh
+# Install the dependencies
+yarn install
+
+# To run build the JS files
+yarn build
+
+# Run the hourly message script
+node ./dist/server.js --hourly
+
+# Run the four hours message script
+node ./dist/server.js --fourHours
+```
 
 ### Tests
 
-`Soon`
+The tests are written using [Mocha](https://mochajs.org/) and [Chai](https://www.chaijs.com/), they are my favorite ~flavour of~ frameworks for js testing.
+
+I think this is the weakeast part of the project since I didn't start the project by using TDD... Well, feel free to help me with this!
+
+I'm also looking forward to add coverage tests.
+
+To run the tests:
+
+```sh
+# Install the dependencies
+yarn install
+
+# To run the tests
+yarn test
+```
 
 ### Deploying
 
-`Soon`
+Now, to deploy the project, everything is smoothed by using Dockers!
+
+Make sure to intall [Docker](https://www.docker.com/) on your OS, and all you gotta do is run:
+
+```
+sh ./deploy.sh <version_of_docker_image (eg.: 0.0.1)>
+```
+
+If you can't run shell scripts, use:
+
+```sh
+# Builds the new version of the container
+docker build -t covid_bot:<version_of_docker_image> .
+
+# Stops currently running containers with the name of "covid_bot"
+docker stop covid_bot
+
+# Remove any container with the name of "covid_bot"
+docker rm covid_bot
+
+# Run the container with the new built image
+docker run -d --name covid_bot -p 3000:3000 covid_bot:<version_of_docker_image>
+```
+
+Remember that even if you have an updated version of Windows 10, [you can run shell scripts on it](https://www.thewindowsclub.com/how-to-run-sh-or-shell-script-file-in-windows-10).
 
 ## Donating
 
